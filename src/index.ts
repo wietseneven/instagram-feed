@@ -1,5 +1,6 @@
 require("dotenv").config();
 import express from "express";
+import http from 'http';
 import logger from "./util/logger";
 const ig = require("instagram-scraping");
 const LRU = require("lru-cache");
@@ -52,4 +53,5 @@ app.get("/user/:username", async (req, res) => {
   }
 });
 
-app.listen(process.env.PORT || 3000, () => console.log(`App is listening on port 3000!`));
+// app.listen(process.env.PORT || 3000, () => console.log(`App is listening on port 3000!`));
+http.createServer(app).listen(process.env.PORT || 3000);

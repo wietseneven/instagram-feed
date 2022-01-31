@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 require("dotenv").config();
 const express_1 = __importDefault(require("express"));
+const http_1 = __importDefault(require("http"));
 const logger_1 = __importDefault(require("./util/logger"));
 const ig = require("instagram-scraping");
 const LRU = require("lru-cache");
@@ -54,4 +55,5 @@ app.get("/user/:username", async (req, res) => {
         res.send("Error!");
     }
 });
-app.listen(3000, () => console.log(`App is listening on port 3000!`));
+// app.listen(process.env.PORT || 3000, () => console.log(`App is listening on port 3000!`));
+http_1.default.createServer(app).listen(process.env.PORT || 3000);
